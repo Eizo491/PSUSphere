@@ -3,17 +3,33 @@ from .models import College, Program, Organization, Student, OrgMember
 
 @admin.register(College)
 class CollegeAdmin(admin.ModelAdmin):
-    list_display = ("college_name", "updated_at")
+    list_display = ("college_name", "created_at", "updated_at")
     search_fields = ("college_name",)
+    list_filter = ("created_at",)
 
 @admin.register(Program)
 class ProgramAdmin(admin.ModelAdmin):
-    list_display = ("prog_name", "college", "updated_at")
-    search_fields = ("prog_name", "college__college_name")
+    list_display = ("prog_name", "college", "created_at", "updated_at")
+    search_fields = ("prog_name",)
+    list_filter = ("college",)
+
+@admin.register(Organization)
+class OrganizationAdmin(admin.ModelAdmin):
+    list_display = ("name", "college", "description", "updated_at")
+    search_fields = ("name", "description")
     list_filter = ("college",)
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("student_id", "lastname", "firstname", "program", "updated_at")
+    list_display = ("student_id", "lastname", "firstname", "middlename", "program")
     search_fields = ("lastname", "firstname", "student_id")
     list_filter = ("program",)
+
+@admin.register(OrgMember)
+class OrgMemberAdmin(admin.ModelAdmin):
+    list_display = ("student", "get_member_program", "organization", "date_joined")
+    search_fields = ("student__lastname", "student__firstname", "organization__name")
+
+    def get_member_program(self, obj):
+        return obj.student.program
+    get_member_program.short_description = 'GET MEMBER PROGRAM'
