@@ -126,14 +126,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTINGS = {
     "site_title": "PSUSphere Admin",
     "site_header": "PSUSphere",
-    "welcome_sign": "Welcome to PSUSphere Management",
     "show_sidebar": True,
     "navigation_expanded": True,
-    "user_menu_links": [
-        {"name": "Log Out", "url": "admin:logout", "icon": "fas fa-sign-out-alt"},
-    ],
-    # This adds it to the top bar as a backup
-    "topmenu_links": [
-        {"name": "Logout", "url": "admin:logout"},
-    ],
+    # This adds a working logout link to the sidebar
+    "custom_links": {
+        "studentorg": [
+            {
+                "name": "Logout", 
+                "url": "/admin/logout/", 
+                "icon": "fas fa-sign-out-alt",
+            },
+        ],
+    },
 }
+LOGOUT_ON_GET = True
