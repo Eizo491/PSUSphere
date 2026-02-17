@@ -127,7 +127,9 @@ JAZZMIN_SETTINGS = {
     "site_title": "PSUSphere Admin",
     "site_header": "PSUSphere",
     "welcome_sign": "Welcome to PSUSphere Management",
-    "search_model": ["studentorg.Student"],
+    "user_menu_links": [
+        {"name": "Log Out", "url": "admin:logout", "icon": "fas fa-sign-out-alt"},
+    ],
     "show_sidebar": True,
     "navigation_expanded": True,
 }
