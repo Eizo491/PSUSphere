@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import College, Program, Organization, Student, OrgMember
 
+admin.site.site_header = "PSUSphere Admin"
+admin.site.site_title = "PSUSphere"
+admin.site.index_title = "Welcome"
+
 @admin.register(College)
 class CollegeAdmin(admin.ModelAdmin):
     list_display = ("college_name", "created_at", "updated_at")
