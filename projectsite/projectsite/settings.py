@@ -127,16 +127,13 @@ JAZZMIN_SETTINGS = {
     "site_title": "PSUSphere Admin",
     "site_header": "PSUSphere",
     "welcome_sign": "Welcome to PSUSphere Management",
-    # This adds a direct link to the top navigation bar
-    "topmenu_links": [
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Log Out", "url": "/admin/logout/", "new_window": False},
-    ],
     "show_sidebar": True,
     "navigation_expanded": True,
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "studentorg.Student": "fas fa-graduation-cap",
-    },
+    "user_menu_links": [
+        {"name": "Log Out", "url": "admin:logout", "icon": "fas fa-sign-out-alt"},
+    ],
+    # This adds it to the top bar as a backup
+    "topmenu_links": [
+        {"name": "Logout", "url": "admin:logout"},
+    ],
 }
